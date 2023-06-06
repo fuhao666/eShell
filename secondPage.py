@@ -1,5 +1,7 @@
 from tkinter import *
 
+from shellcmd import shellcmd
+
 
 class AboutFrame(Frame):
     def __init__(self, root):
@@ -8,7 +10,7 @@ class AboutFrame(Frame):
         Label(self, text='test').pack()
 
         def callback():
-            Label(self, text='test').pack()
+            shellcmd.cmd('reboot')
             print("click me!")
 
         # 使用按钮控件调用函数

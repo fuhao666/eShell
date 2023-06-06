@@ -1,7 +1,7 @@
 from tkinter import *
 import tkinter.messagebox
 from startserver import startserver
-from secondPage import  AboutFrame
+from secondPage import AboutFrame
 
 # 创建窗口：实例化一个窗口对象。
 class mainPage:
@@ -12,7 +12,6 @@ class mainPage:
         # 窗口大小
         self.root.title('eShell')
         self.root.geometry('%dx%d' % (lenth, hei))  # 设置窗口大小
-        print("电脑的分辨率是%dx%d" % (self.root.winfo_screenwidth(), self.root.winfo_screenheight()))
         self.root.maxsize(lenth, hei)
         # 设置窗口被允许最小调整的范围，与resizble()冲突
         self.root.minsize(lenth, hei)

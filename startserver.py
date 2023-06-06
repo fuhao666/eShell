@@ -8,7 +8,7 @@ from shellcmd import shellcmd
 import socket
 import select
 import threading
-import math
+import os,sys
 import datetime
 from time import sleep
 
@@ -17,6 +17,7 @@ class startserver():
     def __init__(self, master=None):
         self.setTime()
         self.start_client()
+        self.start_self()
 
     def setTime(self):  # 设置linux时间
         try:
@@ -78,6 +79,17 @@ class startserver():
             sock.close()
             sock = None
             socket_lock.release()
+        except:
+            strtest = traceback.format_exc()
+            print(strtest)
+
+    def start_self(self):
+        try:
+            path = sys.path[0]
+            f = open(path+'/eshell.desktop', "a")
+            f.write('[Desktop Entry]'+'\n'+'Type=Application'+'\n'+'Exec=%s' % (path+'/dist/main'))
+            f.close
+            shellcmd.cmd('mv %s/eshell.desktop ~/.config/autostart/eshell.desktop' % path)
         except:
             strtest = traceback.format_exc()
             print(strtest)
